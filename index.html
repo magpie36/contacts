@@ -17,8 +17,8 @@
       background-color: #e5e5ea;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      align-items: flex-start;
+      padding: 40px 0;
     }
 
     .iphone-frame {
@@ -192,42 +192,7 @@
       </div>
 
       <!-- Список контактов -->
-      <script>
-        const contacts = [
-          'Мария Иванова — Стоматолог · Москва',
-          'Андрей Смирнов — Дизайнер · Казань',
-          'Екатерина Петрова — SMM-специалист · Тюмень',
-          'Сергей Волков — Юрист · Санкт-Петербург',
-          'Анна Лебедева — Флорист · Сочи',
-          'Игорь Захаров — Разработчик · Новосибирск',
-          'Наталья Романова — Продюсер · Москва',
-          'Дмитрий Соловьёв — SEO-специалист · Краснодар',
-          'Ольга Тарасова — Фотограф · Воронеж',
-          'Иван Кузнецов — Риелтор · Екатеринбург'
-        ];
-
-        document.addEventListener('DOMContentLoaded', () => {
-          const container = document.querySelector('.app-container');
-          contacts.forEach((entry, i) => {
-            const [name, meta] = entry.split(' — ');
-            const row = document.createElement('div');
-            row.className = 'contact-row';
-            row.innerHTML = `
-              <img src="https://i.pravatar.cc/48?u=${i}" alt="avatar" class="avatar" />
-              <div class="contact-info">
-                <div class="name">${name}</div>
-                <div class="meta">${meta}</div>
-              </div>
-              <div class="social-icons">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="VK">
-                <img src="https://cdn-icons-png.flaticon.com/512/3536/3536445.png" alt="WhatsApp">
-              </div>`;
-            container.appendChild(row);
-          });
-        });
-      </script>
+      <div id="contacts-list"></div>
     </div>
   </div>
 
@@ -258,6 +223,41 @@
   </div>
 
   <script>
+    const contacts = [
+      'Мария Иванова — Стоматолог · Москва',
+      'Андрей Смирнов — Дизайнер · Казань',
+      'Екатерина Петрова — SMM-специалист · Тюмень',
+      'Сергей Волков — Юрист · Санкт-Петербург',
+      'Анна Лебедева — Флорист · Сочи',
+      'Игорь Захаров — Разработчик · Новосибирск',
+      'Наталья Романова — Продюсер · Москва',
+      'Дмитрий Соловьёв — SEO-специалист · Краснодар',
+      'Ольга Тарасова — Фотограф · Воронеж',
+      'Иван Кузнецов — Риелтор · Екатеринбург'
+    ];
+
+    const contactsList = document.getElementById('contacts-list');
+
+    contacts.forEach((entry, i) => {
+      const [name, meta] = entry.split(' — ');
+      const row = document.createElement('div');
+      row.className = 'contact-row';
+      row.onclick = () => openModal(name);
+      row.innerHTML = `
+        <img src="https://i.pravatar.cc/48?u=${i}" alt="avatar" class="avatar" />
+        <div class="contact-info">
+          <div class="name">${name}</div>
+          <div class="meta">${meta}</div>
+        </div>
+        <div class="social-icons">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="VK">
+          <img src="https://cdn-icons-png.flaticon.com/512/3536/3536445.png" alt="WhatsApp">
+        </div>`;
+      contactsList.appendChild(row);
+    });
+
     function openModal(name) {
       document.getElementById('modal-name').innerText = name;
       document.getElementById('contact-modal').style.display = 'flex';

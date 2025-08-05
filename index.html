@@ -14,25 +14,40 @@
     }
 
     body {
+      background-color: #e5e5ea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .iphone-frame {
+      width: 390px;
+      height: 844px;
+      border: 16px solid #000;
+      border-radius: 40px;
       background-color: #f2f2f7;
-      color: #1c1c1e;
-      padding: 24px;
+      overflow: hidden;
+      box-shadow: 0 0 0 8px #888;
+      display: flex;
+      flex-direction: column;
     }
 
     .app-container {
-      max-width: 880px;
-      margin: 0 auto;
+      flex: 1;
+      padding: 20px 16px;
+      overflow-y: auto;
     }
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     .logo {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
     }
 
@@ -40,49 +55,38 @@
       background-color: #007aff;
       color: white;
       border: none;
-      border-radius: 12px;
-      padding: 8px 16px;
-      font-size: 15px;
+      border-radius: 10px;
+      padding: 6px 14px;
+      font-size: 14px;
       cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    .add-btn:hover {
-      background-color: #005fcb;
     }
 
     .search-box input {
       width: 100%;
-      padding: 12px 16px;
+      padding: 10px 14px;
       border: none;
-      border-radius: 14px;
-      font-size: 16px;
+      border-radius: 12px;
+      font-size: 15px;
       background: white;
-      margin-bottom: 24px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 16px;
     }
 
     .contact-row {
       display: flex;
       align-items: center;
       background: #ffffff;
-      border-radius: 16px;
-      padding: 14px 18px;
-      margin-bottom: 14px;
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
       cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    .contact-row:hover {
-      background-color: #f2f2f7;
     }
 
     .avatar {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: cover;
-      margin-right: 16px;
+      margin-right: 12px;
     }
 
     .contact-info {
@@ -91,33 +95,33 @@
 
     .name {
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       margin-bottom: 2px;
     }
 
     .meta {
-      font-size: 14px;
+      font-size: 13px;
       color: #666;
     }
 
     .social-icons {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
 
     .social-icons img {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
     }
 
     .modal {
       display: none;
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.25);
       justify-content: center;
       align-items: center;
       z-index: 10;
@@ -125,31 +129,31 @@
 
     .modal-content {
       background: #fff;
-      border-radius: 24px;
-      padding: 32px;
+      border-radius: 28px;
+      padding: 24px;
       width: 90%;
-      max-width: 420px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      max-width: 340px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
     }
 
     .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .modal-header h2 {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .close-modal {
-      font-size: 22px;
+      font-size: 20px;
       cursor: pointer;
     }
 
     .modal-section {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .modal-section label {
@@ -160,7 +164,7 @@
     }
 
     .modal-section p {
-      font-size: 15px;
+      font-size: 14px;
       margin: 0;
     }
 
@@ -176,28 +180,54 @@
   </style>
 </head>
 <body>
-  <div class="app-container">
-    <div class="header">
-      <div class="logo">pupp</div>
-      <button class="add-btn">+ Добавить</button>
-    </div>
-
-    <div class="search-box">
-      <input type="text" placeholder="Поиск по имени, тегам, описанию...">
-    </div>
-
-    <div class="contact-row" onclick="openModal('Мария Иванова')">
-      <img src="https://i.pravatar.cc/48?u=1" alt="avatar" class="avatar" />
-      <div class="contact-info">
-        <div class="name">Мария Иванова</div>
-        <div class="meta">Стоматолог · Москва</div>
+  <div class="iphone-frame">
+    <div class="app-container">
+      <div class="header">
+        <div class="logo">pupp</div>
+        <button class="add-btn">+ Добавить</button>
       </div>
-      <div class="social-icons">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="VK">
-        <img src="https://cdn-icons-png.flaticon.com/512/3536/3536445.png" alt="WhatsApp">
+
+      <div class="search-box">
+        <input type="text" placeholder="Поиск...">
       </div>
+
+      <!-- Список контактов -->
+      <script>
+        const contacts = [
+          'Мария Иванова — Стоматолог · Москва',
+          'Андрей Смирнов — Дизайнер · Казань',
+          'Екатерина Петрова — SMM-специалист · Тюмень',
+          'Сергей Волков — Юрист · Санкт-Петербург',
+          'Анна Лебедева — Флорист · Сочи',
+          'Игорь Захаров — Разработчик · Новосибирск',
+          'Наталья Романова — Продюсер · Москва',
+          'Дмитрий Соловьёв — SEO-специалист · Краснодар',
+          'Ольга Тарасова — Фотограф · Воронеж',
+          'Иван Кузнецов — Риелтор · Екатеринбург'
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const container = document.querySelector('.app-container');
+          contacts.forEach((entry, i) => {
+            const [name, meta] = entry.split(' — ');
+            const row = document.createElement('div');
+            row.className = 'contact-row';
+            row.innerHTML = `
+              <img src="https://i.pravatar.cc/48?u=${i}" alt="avatar" class="avatar" />
+              <div class="contact-info">
+                <div class="name">${name}</div>
+                <div class="meta">${meta}</div>
+              </div>
+              <div class="social-icons">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="VK">
+                <img src="https://cdn-icons-png.flaticon.com/512/3536/3536445.png" alt="WhatsApp">
+              </div>`;
+            container.appendChild(row);
+          });
+        });
+      </script>
     </div>
   </div>
 
